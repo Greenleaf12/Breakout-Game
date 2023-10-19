@@ -2,7 +2,6 @@
 #include "Variables.h"
 #include "TextureLoad.h"
 #include "UIText.h"
-//#include "SDL_opengl.h"
 #include "SDL_image.h"
 #include <stdbool.h>
 #include <string.h>
@@ -11,11 +10,9 @@
 #include <stdlib.h>
 #include "SDL_mixer.h"
 
-
 int main(int agrc, char* args[])
 
 {
-
     const int FPS = 60;
     const int frameDelay = 1000 / FPS;
 
@@ -23,11 +20,9 @@ int main(int agrc, char* args[])
     int frameTime;
 
     // Intialize SDL //
-
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
 
     // Intialize IMG //
-
     int flags = IMG_INIT_JPG | IMG_INIT_PNG;
     int initted = IMG_Init(flags);
     if ((initted & flags) != flags)
@@ -35,14 +30,12 @@ int main(int agrc, char* args[])
     printf("IMG_Init: %s\n", IMG_GetError());
 
     // Initialize Mixer //
-
     if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 8, 4096) == -1)
     {
         return false;
     }
 
     // Load the sound effects //
-
     ballpaddlehit = Mix_LoadWAV("Sounds/ballpaddlehit.wav");
     powerup = Mix_LoadWAV("Sounds/bonus.wav");
     game_over = Mix_LoadWAV("Sounds/game_over.wav");
@@ -60,15 +53,12 @@ int main(int agrc, char* args[])
     SDL_SetWindowResizable(window, SDL_FALSE);
 
     // Load Renderer //
-
     renderer = SDL_CreateRenderer(window, -1, 0);
 
     // Brick Struture //
-
     struct Brick01 lvl1[BRICKS01];
 
     // Image Loading //
-
     LoadTextures();
 
     // OpenGL memory usage //
@@ -82,10 +72,7 @@ int main(int agrc, char* args[])
 
     bool isRunning = true;
 
-    /*source based on Luka Horvat: ~ https://pastebin.com/jqnGJRfR */
-
     // Level one brick structure //
-
     if (level == 1)
     {
         for (int i = 0, x = 64, y = 80; i < BRICKS01; i++, x += 67)
@@ -96,7 +83,6 @@ int main(int agrc, char* args[])
                     x = 64; // Reset X
                     y += 20; // Move Y down
                 }
-
             }
             lvl1[i].brickposX = x; // X position
             lvl1[i].brickposY = y; // Y position
@@ -106,19 +92,13 @@ int main(int agrc, char* args[])
         }
     }
 
-    /*source based on Luka Horvat ends here */
-
     // PlayMusic //
-
     Mix_PlayMusic(music, -1);
 
     // Main Events //
-
     while (isRunning == true)
 
-    {
-
-        
+    {    
         // Frame Limiter //
         frameStart = SDL_GetTicks();
 
@@ -352,12 +332,10 @@ int main(int agrc, char* args[])
         {
             brickStructure = BRICKS01;
         }
-
         else if (level == 2)
         {
             brickStructure = BRICKS02;
         }
-
         else if (level == 3)
         {
             brickStructure = BRICKS03;
@@ -392,7 +370,6 @@ int main(int agrc, char* args[])
                 }
 
                 // Extra ball Collision
-
                 if (checkCollision(ballX2, ballY2, ballWH2, ballWH2, (float)lvl1[i].brickposX, (float)lvl1[i].brickposY, (float)lvl1[i].brickX, (float)lvl1[i].brickY) == true) //Check for collision
                 {
                     Mix_PlayChannel(2, brickhit, 0);
@@ -407,7 +384,6 @@ int main(int agrc, char* args[])
                 }
 
                 // Laser Collision
-
                 if (checkCollision(laserX, laserY, (float)laserW, (float)laserH, (float)lvl1[i].brickposX, (float)lvl1[i].brickposY, (float)lvl1[i].brickX, (float)lvl1[i].brickY) == true) //Check for collision
                 {
 
@@ -425,17 +401,14 @@ int main(int agrc, char* args[])
                 }
             }
         }
-
         /*source based on Luka Horvat ends here */
 
         BallMotion();
         PaddleCollision();
-
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderPresent(renderer);
 
         // Game over //
-
         if (life < 0)
 
         {
@@ -445,11 +418,9 @@ int main(int agrc, char* args[])
             SDL_Delay(3000);
             break;
         }
-
     }
 
     // Cleanup //
-
     SDL_DestroyTexture(backgroundtexture);
     SDL_DestroyTexture(balltexture);
     SDL_DestroyTexture(bricktexture1);
@@ -484,9 +455,7 @@ int main(int agrc, char* args[])
     SDL_DestroyTexture(pressSpacetexture);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
-
     SDL_Quit();
-
     return 0;
 }
 
@@ -496,14 +465,12 @@ void BallLogic()
     SDL_Rect plifelost = { 280, 280, 240, 100 };
 
     // Bottom edge collision for extra ball
-
     if (ballY2 > 640)
     {
         bonusballOn = false;
     }
 
     // Bottom edge collision
-
     if (ballY >= 640)
     {
         laserOn = false;
@@ -517,7 +484,6 @@ void BallLogic()
     }
 
     // Screen edge collision
-
     if (ballX <= 1)
     {
         vellX = -vellX;
@@ -534,14 +500,12 @@ void BallLogic()
     }
 
     // Out of bounds Reset
-
     if (ballX < -10 || ballX > 900)
     {
         ballX = paddlex;
     }
 
     // Screen edge collision extra ball
-
     if (ballX2 <= 1)
     {
         vellX2 = -vellX2;
@@ -558,7 +522,6 @@ void BallLogic()
     }
 
     // Out of bounds Reset
-
     if (ballX2 < 0 || ballX2 > 800)
     {
         ballX2 = paddlex;
@@ -569,7 +532,6 @@ void KeyboardControls()
 
 {
     // Keyboard controls
-
     if (event.type == SDL_KEYDOWN)
     {
         switch (event.key.keysym.sym)
@@ -609,7 +571,6 @@ void PaddleCollision()
     }
 
     // Paddle Collision Extra Ball
-
     if (checkCollision(ballX2, ballY2, ballWH2, ballWH2, paddlex, paddley, (float)paddleWidth, (float)paddleHeight) == true)
     {
         Mix_PlayChannel(6, ballpaddlehit, 0);
@@ -643,12 +604,8 @@ void BallMotion()
     }
 }
 
-
-
 void ExtraBall()
 {
-    // Extra Ball Spawn
-
     SDL_Rect pball2 = { (int)ballX2, (int)ballY2, ballWH2, ballWH2 };
     SDL_Rect pbonusBall = { 5, 600, 240, 40 };
 
@@ -683,8 +640,6 @@ void ExtraBall()
 
 void LaserBeam()
 {
-    // Laser Power Up
-
     SDL_Rect pbonusLaser = { 560, 600, 240, 40 };
     SDL_Rect plaser = { (int)laserX, (int)laserY, laserW, laserH };
 
