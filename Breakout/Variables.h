@@ -9,7 +9,7 @@ int life = 3;
 int playerScore = 0;
 int level = 1;
 int bricksAlive = 130;
-
+int score10s;
 // Power up variables //
 
 int r; // Random number

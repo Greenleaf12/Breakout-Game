@@ -118,7 +118,7 @@ int main(int agrc, char* args[])
 
     {
 
-
+        
         // Frame Limiter //
         frameStart = SDL_GetTicks();
 
@@ -166,12 +166,13 @@ int main(int agrc, char* args[])
         // Functions //
 
         KeyboardControls();
-        ScoreRender();
+
         LevelText();
         LifeText();
         ExtraBall();
         LaserBeam();
         BallLogic();
+        ScoreRender();
 
         ////////////////// Level Change ////////////////////////
 
