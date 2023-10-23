@@ -26,22 +26,22 @@ void ScoreRender()
    if (playerScore / 10 == 4 || playerScore / 10 % 10 == 4) {
        SDL_RenderCopy(renderer, scoretexture4, NULL, &pscore2);
    }
-   else if (playerScore / 10 == 5 || playerScore / 10 % 10 == 5) {
+   if (playerScore / 10 == 5 || playerScore / 10 % 10 == 5) {
        SDL_RenderCopy(renderer, scoretexture5, NULL, &pscore2);
    }
-   else if (playerScore / 10 == 6 || playerScore / 10 % 10 == 6) {
+   if (playerScore / 10 == 6 || playerScore / 10 % 10 == 6) {
        SDL_RenderCopy(renderer, scoretexture6, NULL, &pscore2);
    }
-   else if (playerScore / 10 == 7 || playerScore / 10 % 10 == 7) {
+   if (playerScore / 10 == 7 || playerScore / 10 % 10 == 7) {
        SDL_RenderCopy(renderer, scoretexture7, NULL, &pscore2);
    }
-   else if (playerScore / 10 == 8 || playerScore / 10 % 10 == 8) {
+   if (playerScore / 10 == 8 || playerScore / 10 % 10 == 8) {
        SDL_RenderCopy(renderer, scoretexture8, NULL, &pscore2);
    }
-   else if (playerScore / 10 == 9 || playerScore / 10 % 10 == 9) {
+   if (playerScore / 10 == 9 || playerScore / 10 % 10 == 9) {
        SDL_RenderCopy(renderer, scoretexture9, NULL, &pscore2);
    }
-   else if (playerScore / 10 == 10 || playerScore / 10 % 10 == 0) {
+   if (playerScore / 10 == 10 || playerScore / 10 % 10 == 0) {
        SDL_RenderCopy(renderer, scoretexture0, NULL, &pscore2);
    }
 
@@ -50,31 +50,31 @@ void ScoreRender()
     if (playerScore / 100 == 1 || playerScore / 100 % 10 == 1) {
         SDL_RenderCopy(renderer, scoretexture1, NULL, &pscore1);
     }
-    else if (playerScore / 100 == 2 || playerScore / 100 % 10 == 2) {
+    if (playerScore / 100 == 2 || playerScore / 100 % 10 == 2) {
         SDL_RenderCopy(renderer, scoretexture2, NULL, &pscore1);
     }
-    else if (playerScore / 100 == 3 || playerScore / 100 % 10 == 3) {
+    if (playerScore / 100 == 3 || playerScore / 100 % 10 == 3) {
         SDL_RenderCopy(renderer, scoretexture3, NULL, &pscore1);
     }
-    else if (playerScore / 100 == 4 || playerScore / 100 % 10 == 4) {
+    if (playerScore / 100 == 4 || playerScore / 100 % 10 == 4) {
         SDL_RenderCopy(renderer, scoretexture4, NULL, &pscore1);
     }
-    else if (playerScore / 100 == 5 || playerScore / 100 % 10 == 5) {
+    if (playerScore / 100 == 5 || playerScore / 100 % 10 == 5) {
         SDL_RenderCopy(renderer, scoretexture5, NULL, &pscore1);
     }
-    else if (playerScore / 100 == 6 || playerScore / 100 % 10 == 6) {
+    if (playerScore / 100 == 6 || playerScore / 100 % 10 == 6) {
         SDL_RenderCopy(renderer, scoretexture6, NULL, &pscore1);
     }
-    else if (playerScore / 100 == 7 || playerScore / 100 % 10 == 7) {
+    if (playerScore / 100 == 7 || playerScore / 100 % 10 == 7) {
         SDL_RenderCopy(renderer, scoretexture7, NULL, &pscore1);
     }
-    else if (playerScore / 100 == 8 || playerScore / 100 % 10 == 8) {
+    if (playerScore / 100 == 8 || playerScore / 100 % 10 == 8) {
         SDL_RenderCopy(renderer, scoretexture8, NULL, &pscore1);
     }
-    else if (playerScore / 100 == 9 || playerScore / 100 % 10 == 9) {
+    if (playerScore / 100 == 9 || playerScore / 100 % 10 == 9) {
         SDL_RenderCopy(renderer, scoretexture9, NULL, &pscore1);
     }
-    else if (playerScore / 100 == 10 || playerScore / 100 % 10 == 0) {
+    if (playerScore / 100 == 10 || playerScore / 100 % 10 == 0) {
         SDL_RenderCopy(renderer, scoretexture0, NULL, &pscore1);
     }
 
@@ -98,16 +98,16 @@ void ScoreRender()
     if (playerScore / 1000 == 6 || playerScore / 1000 % 10 == 6) {
         SDL_RenderCopy(renderer, scoretexture6, NULL, &pscore4);
     }
-    else if (playerScore / 1000 == 7 || playerScore / 1000 % 10 == 7) {
+    if (playerScore / 1000 == 7 || playerScore / 1000 % 10 == 7) {
         SDL_RenderCopy(renderer, scoretexture7, NULL, &pscore4);
     }
-    else if (playerScore / 1000 == 8 || playerScore / 1000 % 10 == 8) {
+    if (playerScore / 1000 == 8 || playerScore / 1000 % 10 == 8) {
         SDL_RenderCopy(renderer, scoretexture8, NULL, &pscore4);
     }
-    else if (playerScore / 1000 == 9 || playerScore / 1000 % 10 == 9) {
+    if (playerScore / 1000 == 9 || playerScore / 1000 % 10 == 9) {
         SDL_RenderCopy(renderer, scoretexture9, NULL, &pscore4);
     }
-    else if (playerScore / 1000 == 10 || playerScore / 1000 % 10 == 0) {
+    if (playerScore / 1000 == 10 || playerScore / 1000 % 10 == 0) {
         SDL_RenderCopy(renderer, scoretexture0, NULL, &pscore4);
     }
 }
