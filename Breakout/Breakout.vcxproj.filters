@@ -23,10 +23,28 @@
     <ClInclude Include="Variables.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="UIText.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="TextureLoad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UIText.h">
+    <ClInclude Include="BallLogic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LaserBeam.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtraBall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardControls.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PaddleCollision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BallMotion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

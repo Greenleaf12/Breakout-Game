@@ -1,14 +1,25 @@
+
+// Breakout Game in C - Written by Rory Gardner - 2020 //
+
 #include "SDL.h"
-#include "Variables.h"
-#include "TextureLoad.h"
-#include "UIText.h"
+#include "SDL_mixer.h"
 #include "SDL_image.h"
+
 #include <stdbool.h>
 #include <string.h>
 #include <math.h>
 #include <stdio.h> 
 #include <stdlib.h>
-#include "SDL_mixer.h"
+
+#include "Variables.h"
+#include "TextureLoad.h"
+#include "UIText.h"
+#include "BallLogic.h"
+#include "LaserBeam.h"
+#include "ExtraBall.h"
+#include "KeyboardControls.h"
+#include "BallMotion.h"
+#include "PaddleCollision.h"
 
 int main(int agrc, char* args[])
 
@@ -110,7 +121,6 @@ int main(int agrc, char* args[])
         }
 
         // Mixer Levels //
-
         Mix_Volume(0, 20);
         Mix_Volume(1, 20);
         Mix_Volume(2, 20);
@@ -122,7 +132,6 @@ int main(int agrc, char* args[])
         Mix_Volume(8, 20);
 
         // SDL Events //
-
         SDL_PollEvent(&event);
 
         if (event.type == SDL_QUIT)
@@ -131,12 +140,10 @@ int main(int agrc, char* args[])
         }
 
         // Paddle and ball positions //
-
         SDL_Rect ppaddle = { (int)paddlex, (int)paddley, paddleWidth, paddleHeight };
         SDL_Rect pball = { (int)ballX, (int)ballY, ballWH, ballWH };
 
         // Image Renders //
-
         SDL_RenderCopy(renderer, backgroundtexture, NULL, NULL);
         SDL_RenderCopy(renderer, paddletexture, NULL, &ppaddle);
         SDL_RenderCopy(renderer, balltexture, NULL, &pball);
@@ -144,9 +151,7 @@ int main(int agrc, char* args[])
         SDL_RenderCopy(renderer, scoretexture0, NULL, &pscore3);
 
         // Functions //
-
         KeyboardControls();
-
         LevelText();
         LifeText();
         ExtraBall();
@@ -365,10 +370,8 @@ int main(int agrc, char* args[])
                     {
                         r = (int)rand() / (int)(RAND_MAX / 20);
                     }
-
                     break;
                 }
-
                 // Extra ball Collision
                 if (checkCollision(ballX2, ballY2, ballWH2, ballWH2, (float)lvl1[i].brickposX, (float)lvl1[i].brickposY, (float)lvl1[i].brickX, (float)lvl1[i].brickY) == true) //Check for collision
                 {
@@ -401,7 +404,6 @@ int main(int agrc, char* args[])
                 }
             }
         }
-        /*source based on Luka Horvat ends here */
 
         BallMotion();
         PaddleCollision();
@@ -410,7 +412,6 @@ int main(int agrc, char* args[])
 
         // Game over //
         if (life < 0)
-
         {
             SDL_RenderCopy(renderer, gameovertexture, NULL, &pgameover);
             SDL_RenderPresent(renderer);
@@ -459,208 +460,5 @@ int main(int agrc, char* args[])
     return 0;
 }
 
-void BallLogic()
 
-{
-    SDL_Rect plifelost = { 280, 280, 240, 100 };
-
-    // Bottom edge collision for extra ball
-    if (ballY2 > 640)
-    {
-        bonusballOn = false;
-    }
-
-    // Bottom edge collision
-    if (ballY >= 640)
-    {
-        laserOn = false;
-        bonusballOn = false;
-        ballMotion = false;
-        Mix_PlayChannel(-1, lose_life, 0);
-        if (life > 0) SDL_RenderCopy(renderer, lifelosttexture, NULL, &plifelost);
-        SDL_RenderPresent(renderer);
-        life -= 1;
-        SDL_Delay(2000);
-    }
-
-    // Screen edge collision
-    if (ballX <= 1)
-    {
-        vellX = -vellX;
-    }
-
-    if (ballX >= 786)
-    {
-        vellX = -vellX;
-    }
-
-    if (ballY <= 1)
-    {
-        vellY = -vellY;
-    }
-
-    // Out of bounds Reset
-    if (ballX < -10 || ballX > 900)
-    {
-        ballX = paddlex;
-    }
-
-    // Screen edge collision extra ball
-    if (ballX2 <= 1)
-    {
-        vellX2 = -vellX2;
-    }
-
-    if (ballX2 >= 786)
-    {
-        vellX2 = -vellX2;
-    }
-
-    if (ballY2 <= 1)
-    {
-        vellY2 = -vellY2;
-    }
-
-    // Out of bounds Reset
-    if (ballX2 < 0 || ballX2 > 800)
-    {
-        ballX2 = paddlex;
-    }
-}
-
-void KeyboardControls()
-
-{
-    // Keyboard controls
-    if (event.type == SDL_KEYDOWN)
-    {
-        switch (event.key.keysym.sym)
-        {
-        case SDLK_LEFT:
-            paddlex -= SPEED;
-            break;
-
-        case SDLK_RIGHT:
-            paddlex += SPEED;
-            break;
-
-        case SDLK_SPACE:
-            ballMotion = true;
-            ballMotion2 = true;
-            break;
-        }
-        // Screen edge collision
-        if (paddlex < 0) { paddlex = 0; }
-        if (paddlex > 720) { paddlex = 720; }
-    }
-}
-
-void PaddleCollision()
-{
-    // Paddle Collision Main Ball
-
-    if (checkCollision(ballX, ballY, ballWH, ballWH, paddlex, paddley, (float)paddleWidth, (float)paddleHeight) == true)
-    {
-        vellY = 6.0f; //Ball Y speed
-        Mix_PlayChannel(6, ballpaddlehit, 0);
-    }
-    if (checkCollision(ballY, ballX, ballWH, ballWH, paddley, paddlex, (float)paddleWidth, (float)paddleHeight) == true)
-    {
-        // Random ball X speed
-        vellX = (float)rand() / (float)(RAND_MAX / 4.5f);
-    }
-
-    // Paddle Collision Extra Ball
-    if (checkCollision(ballX2, ballY2, ballWH2, ballWH2, paddlex, paddley, (float)paddleWidth, (float)paddleHeight) == true)
-    {
-        Mix_PlayChannel(6, ballpaddlehit, 0);
-        vellY2 = -vellY2; //Ball Y speed
-    }
-    if (checkCollision(ballY2, ballX2, ballWH2, ballWH2, paddley, paddlex, (float)paddleWidth, (float)paddleHeight) == true)
-    {
-        // Random ball X speed
-        vellX2 = (float)rand() / (float)(RAND_MAX / 4.5f);
-    }
-}
-
-void BallMotion()
-{
-
-    SDL_Rect ppressSpace = { 280, 600, 240, 40 };
-
-    if (ballMotion == true)
-    {
-        ballX -= vellX;
-        ballY -= vellY;
-    }
-    else if (ballMotion == false)
-    {
-        laserOn = false;
-        bonusballOn = false;
-        SDL_RenderCopy(renderer, pressSpacetexture, NULL, &ppressSpace);
-        SDL_RenderPresent(renderer);
-        ballX = paddlex + 32;
-        ballY = paddley - 16;
-    }
-}
-
-void ExtraBall()
-{
-    SDL_Rect pball2 = { (int)ballX2, (int)ballY2, ballWH2, ballWH2 };
-    SDL_Rect pbonusBall = { 5, 600, 240, 40 };
-
-    if (r == 10 && laserOn == false && ballMotion == true)
-    {
-        bonusballOn = true;
-        Mix_PlayChannel(-1, powerup, 0);
-    }
-
-    if (bonusballOn == true)
-    {
-        SDL_RenderCopy(renderer, balltexture2, NULL, &pball2);
-        SDL_RenderCopy(renderer, bonusballtexture, NULL, &pbonusBall);
-    }
-    else if (bonusballOn == false)
-    {
-        ballX2 = paddlex + 32;
-        ballY2 = paddley - 35;
-    }
-
-    if (ballMotion2 == true)
-    {
-        ballX2 -= vellX2;
-        ballY2 -= vellY2;
-    }
-    else if (ballMotion2 == false)
-    {
-        ballX2 = paddlex + 32;
-        ballY2 = paddley - 35;
-    }
-}
-
-void LaserBeam()
-{
-    SDL_Rect pbonusLaser = { 560, 600, 240, 40 };
-    SDL_Rect plaser = { (int)laserX, (int)laserY, laserW, laserH };
-
-    if (r == 1 && bonusballOn == false && ballMotion == true)
-    {
-        laserOn = true;
-        Mix_PlayChannel(-1, powerup, 0);
-    }
-
-    if (laserOn == true)
-    {
-        laserY -= laserVellY;
-        SDL_RenderCopy(renderer, lasertexture, NULL, &plaser);
-        SDL_RenderCopy(renderer, bonuslasertexture, NULL, &pbonusLaser);
-    }
-
-    if (laserY <= 5)
-    {
-        Mix_PlayChannel(5, laser_sound, 0);
-        laserY = paddley - 30;
-        laserX = paddlex + 40;
-    }
-}
 

@@ -4,20 +4,18 @@
 #include "SDL_mixer.h"
 
 // Player Variables //
-
 int life = 3;
 int playerScore = 0;
 int level = 1;
 int bricksAlive = 130;
 int score10s;
-// Power up variables //
 
+// Power up variables //
 int r; // Random number
 bool laserOn = true;
 bool bonusballOn = false;
 
 // Functions //
-
 void BallLogic();
 void KeyboardControls();
 void PaddleCollision();
@@ -31,9 +29,6 @@ void BrickRenders();
 void LoadTextures();
 
 // Collision Detection //
-
-/*source based on Luka Horvat: ~ https://pastebin.com/jqnGJRfR */
-
 bool checkCollision(float Ax, float Ay, float Aw, float Ah, float Bx, float By, float Bw, float Bh)
 {
     if (Ay + Ah < By) return false;
@@ -44,10 +39,8 @@ bool checkCollision(float Ax, float Ay, float Aw, float Ah, float Bx, float By, 
     return true;
 }
 
-/*source based on Luka Horvat ends here */
 
 // Brick Structure //
-
 struct Brick01
 {
 
@@ -59,7 +52,6 @@ struct Brick01
 };
 
 // Brick Elements //
-
 const int BRICKS01 = 130; // Number of bricks 
 const int BRICKS02 = 126;
 const int BRICKS03 = 126;
@@ -67,7 +59,6 @@ const int BRICKS03 = 126;
 int brickStructure;
 
 // Paddle Variables //
-
 const float SPEED = 9.2f; // Speed of paddle
 
 float paddlex = 360.0f; // X Start position
@@ -77,7 +68,6 @@ int paddleWidth = 80; // Paddle width
 int paddleHeight = 18; // Paddle height
 
 // Ball variables //
-
 float ballX = 440.0f; // X start position
 float ballY = 570.0f; // Y start position
 const int ballWH = 14; // Width and height
@@ -88,7 +78,6 @@ float vellY = 6.0f; // Ball Y speed
 bool ballMotion = false;
 
 // Extra ball variables //
-
 float ballX2 = 400; // X start position
 float ballY2 = 550; // Y start position
 const int ballWH2 = 24; // Width and height
@@ -99,7 +88,6 @@ float vellY2 = 5.0f; // Ball Y speed
 bool ballMotion2 = false;
 
 // Laser Variables //
-
 float laserX = 400.0f; // X start position
 float laserY = 550.0f; // Y start position
 

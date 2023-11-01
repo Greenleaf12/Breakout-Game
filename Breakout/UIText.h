@@ -14,7 +14,7 @@ void ScoreRender()
    //         SDL_RenderCopy(renderer, scoretexture1, NULL, &pscore2);
    // }
    
-   if (playerScore / 10 == 1 || playerScore / 10 % 10 == 12) {
+   if (playerScore / 10 == 1 || playerScore / 10 % 10 == 1) {
        SDL_RenderCopy(renderer, scoretexture1, NULL, &pscore2);
    }
    if (playerScore / 10 == 2 || playerScore / 10 % 10 == 2) {
@@ -46,7 +46,6 @@ void ScoreRender()
    }
 
     // Player Score Render 100s
-
     if (playerScore / 100 == 1 || playerScore / 100 % 10 == 1) {
         SDL_RenderCopy(renderer, scoretexture1, NULL, &pscore1);
     }
@@ -79,7 +78,6 @@ void ScoreRender()
     }
 
     // Player Score Render 1000s
-
     if (playerScore / 1000 == 1 || playerScore / 1000 % 10 == 1) {
         SDL_RenderCopy(renderer, scoretexture1, NULL, &pscore4);
     }
@@ -115,7 +113,6 @@ void ScoreRender()
 void LevelText()
 {
     // Level Text Render
-
     SDL_Rect plevel = { 350, 10, 120, 42 };
 
     if (level == 1) {
@@ -132,7 +129,6 @@ void LevelText()
 void LifeText()
 {
     // Life Text Render
-
     SDL_Rect plifes = { 10, 10, 120, 42 };
 
     if (life == 3) {
