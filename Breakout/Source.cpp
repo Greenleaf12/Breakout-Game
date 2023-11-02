@@ -11,15 +11,15 @@
 #include <stdio.h> 
 #include <stdlib.h>
 
-#include "Variables.h"
-#include "TextureLoad.h"
-#include "UIText.h"
-#include "BallLogic.h"
-#include "LaserBeam.h"
-#include "ExtraBall.h"
-#include "KeyboardControls.h"
-#include "BallMotion.h"
-#include "PaddleCollision.h"
+#include "Include\Variables.h"
+#include "Include\TextureLoad.h"
+#include "Include\UIText.h"
+#include "Include\BallLogic.h"
+#include "Include\LaserBeam.h"
+#include "Include\ExtraBall.h"
+#include "Include\KeyboardControls.h"
+#include "Include\BallMotion.h"
+#include "Include\PaddleCollision.h"
 
 int main(int agrc, char* args[])
 

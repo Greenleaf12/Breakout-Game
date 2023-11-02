@@ -20,31 +20,31 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Variables.h">
+    <ClInclude Include="Include\BallLogic.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UIText.h">
+    <ClInclude Include="Include\BallMotion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TextureLoad.h">
+    <ClInclude Include="Include\ExtraBall.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BallLogic.h">
+    <ClInclude Include="Include\KeyboardControls.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LaserBeam.h">
+    <ClInclude Include="Include\LaserBeam.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ExtraBall.h">
+    <ClInclude Include="Include\PaddleCollision.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="KeyboardControls.h">
+    <ClInclude Include="Include\TextureLoad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PaddleCollision.h">
+    <ClInclude Include="Include\UIText.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BallMotion.h">
+    <ClInclude Include="Include\Variables.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

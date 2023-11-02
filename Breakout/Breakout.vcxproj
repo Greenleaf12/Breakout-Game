@@ -146,15 +146,15 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BallLogic.h" />
-    <ClInclude Include="BallMotion.h" />
-    <ClInclude Include="ExtraBall.h" />
-    <ClInclude Include="KeyboardControls.h" />
-    <ClInclude Include="LaserBeam.h" />
-    <ClInclude Include="PaddleCollision.h" />
-    <ClInclude Include="TextureLoad.h" />
-    <ClInclude Include="UIText.h" />
-    <ClInclude Include="Variables.h" />
+    <ClInclude Include="Include\BallLogic.h" />
+    <ClInclude Include="Include\BallMotion.h" />
+    <ClInclude Include="Include\ExtraBall.h" />
+    <ClInclude Include="Include\KeyboardControls.h" />
+    <ClInclude Include="Include\LaserBeam.h" />
+    <ClInclude Include="Include\PaddleCollision.h" />
+    <ClInclude Include="Include\TextureLoad.h" />
+    <ClInclude Include="Include\UIText.h" />
+    <ClInclude Include="Include\Variables.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
